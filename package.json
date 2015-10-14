@@ -1,6 +1,6 @@
 {
   "name": "lunchbot",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "This application will scrape content from a website to push it to Slack.",
   "main": "index.js",
   "scripts": {
