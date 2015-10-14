@@ -24,7 +24,7 @@ app.listen(server_port, server_ip_address, function () {
   console.log( "Listening on " + server_ip_address + ", port " + server_port);
 });
 
-var cronJob = cron.job("0 * * * * *", function(){ //every minute
+var cronJob = cron.job("00 18 18 * * 1-5", function(){ //daily on weekdays at 18:18+4
     request(url, function(error, response, html){
 
     // First we'll check to make sure no errors occurred when making the request
