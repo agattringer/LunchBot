@@ -1,0 +1,25 @@
+{
+  "name": "lunchbot",
+  "version": "0.0.1",
+  "description": "This application will scrape content from a website to push it to Slack.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://axi798@github.com/axi798/LunchBot.git"
+  },
+  "author": "Alexander Gattringer",
+  "dependencies" : {
+    "express"    : "latest",
+    "request"    : "latest",
+    "cheerio"    : "latest"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/axi798/LunchBot/issues"
+  },
+  "homepage": "https://github.com/axi798/LunchBot#readme"
+}
+
