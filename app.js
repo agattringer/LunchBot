@@ -22,22 +22,19 @@ request(url, function(error, response, html){
         // Next, we'll utilize the cheerio library on the returned html which will essentially give us jQuery functionality
 		var $ = cheerio.load(html);
 		// Finally, we'll define the variables we're going to capture
+		var headline = "*Today's menu at Campina:*"
+		//css 
+		var starter = $('.margintop tr:nth-child(1) b:nth-child(1)').text();
+		var mainCourse1 = $('.margintop tr:nth-child(1) b:nth-child(3)').text();
+		var mainCourse2 = $('.margintop tr+ tr b:nth-child(3)').text();
+		var dessert = $('.margintop tr:nth-child(1) b:nth-child(5)').text();
 
-        var menu1, menu2;
-
-        $('.margintop').filter(function(){
-        	$('')
-        	// Let's store the data we filter into a variable so we can easily see what's going on.
-			var data = $(this);
-
-        	// In examining the DOM we notice that the title rests within the first child element of the header tag. 
-        	// Utilizing jQuery we can easily navigate and get the text by writing the following code:
-			menu1 = data.children().first().first().last().text();
-			menu2 = data.children().first().last().last().text();
-
-            // Once we have our menues, we'll store it to the our json object.
-            console.log("writing" + menu1 + menu2 + "to slack");
-			// menuJSON.text = menu1 + menu2; //menu1;
+		console.log(starter);
+		console.log(mainCourse1);
+		console.log(mainCourse2);
+		console.log(dessert);
+		//Format stuff for beautiful displaying in slack :)
+		menuJSON.text = headline + "\n" + starter + "\n ----------\n" + mainCourse1 + "\n" + mainCourse2 + "\n ----------\n" + dessert; //write data to json;
 
 			//send data to slack
 			request({
@@ -52,6 +49,5 @@ request(url, function(error, response, html){
         			console.log(response.statusCode, body);
 				}
 			});
-        })
     }
 })
