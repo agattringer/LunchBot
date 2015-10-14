@@ -10,13 +10,21 @@ var url = 'http://heutemittag.at/index.php?site=tagesmenu&vars=lokal_id=17';
 
 exports = module.exports = app;
 
+var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080
+var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1'
+
 // error handler
 app.use(function (err, req, res, next) {
   console.error(err.stack);
   res.status(400).send(err.message);
 });
 
-var cronJob = cron.job("00 45 15 * * 1-5", function(){
+
+app.listen(server_port, server_ip_address, function () {
+  console.log( "Listening on " + server_ip_address + ", port " + server_port);
+});
+
+var cronJob = cron.job("0 * * * * *", function(){ //every minute
     request(url, function(error, response, html){
 
     // First we'll check to make sure no errors occurred when making the request
