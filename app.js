@@ -16,7 +16,7 @@ app.use(function (err, req, res, next) {
   res.status(400).send(err.message);
 });
 
-var cronJob = cron.job("'00 30 17 * * 1-5'", function(){
+var cronJob = cron.job("0 * * * * *", function(){
     request(url, function(error, response, html){
 
     // First we'll check to make sure no errors occurred when making the request
