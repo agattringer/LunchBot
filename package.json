@@ -4,7 +4,8 @@
   "description": "This application will scrape content from a website to push it to Slack.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app"
   },
   "repository": {
     "type": "git",
@@ -15,6 +16,7 @@
     "express"    : "latest",
     "request"    : "latest",
     "cheerio"    : "latest"
+    "cron"       : "latest"
   },
   "license": "ISC",
   "bugs": {

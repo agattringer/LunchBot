@@ -2,6 +2,7 @@ var express = require('express');
 var fs = require('fs');
 var request = require('request');
 var cheerio = require('cheerio');
+var cron = require('cron');
 
 var app = express();
 var menuJSON = { text : ""};
@@ -15,7 +16,8 @@ app.use(function (err, req, res, next) {
   res.status(400).send(err.message);
 });
 
-request(url, function(error, response, html){
+var cronJob = cron.job("'00 30 09 * * 1-5'", function(){
+    request(url, function(error, response, html){
 
     // First we'll check to make sure no errors occurred when making the request
 	if(!error){
@@ -51,3 +53,7 @@ request(url, function(error, response, html){
 			});
     }
 })
+    console.info('cron job completed');
+}); 
+
+cronJob.start();
